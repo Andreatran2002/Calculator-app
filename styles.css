@@ -1,15 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap');
+
 *,*::before,*::after{
   box-sizing: border-box;
-  font-family: Gotham Rounded,sans-serif;
+  font-family: 'Spartan', sans-serif;
   font-weight: normal;
+  font-size: 32;
 }
 
 body{
+  --primary-bg-color: hsl(222, 26%, 31%); 
+  --toggle-bg-color: hsl(223, 31%, 20%); 
+  --screen-bg-color: hsl(224, 36%, 15%); 
+  --text-color : white; 
+  --number-color :  hsl(221, 14%, 31%); 
+  --box-shadow : 0 5px 2px hsl(28, 16%, 65%);
+  --range-color : hsl(25, 98%, 40%); 
+  --equals-color : hsl(6, 63%, 50%); 
+  --equals-shadow-color :  0 5px 2px hsl(6, 70%, 34%);
+  --text-button-color : hsl(225, 21%, 49%); 
+  --text-button-shadow-color:  0 5px 2px hsl(224, 28%, 35%);
+  --keyboard-bg : hsl(30, 25%, 89%); 
   padding : 0 ; 
   margin : 0 ; 
-  background : hsl(222, 26%, 31%); 
-  color : white; 
+  background : var(--primary-bg-color); 
+  color : var(--text-color);
 
+}
+
+body.theme-2{
+  --primary-bg-color: hsl(0, 0%, 90%); 
+  --toggle-bg-color: hsl(0, 5%, 81%); 
+  --screen-bg-color: hsl(0, 0%, 93%); 
+  --text-color : hsl(0,0,100%);  
+  --number-color :  hsl(60, 10%, 19%);
+  --range-color : hsl(25, 98%, 40%); 
+  --equals-color : hsl(25, 98%, 40%); 
+  --box-shadow : 0 5px 2px hsl(35, 11%, 61%);
+  --equals-shadow-color :  0 5px 2px hsl(25, 99%, 27%);
+  --text-button-color : hsl(185, 42%, 37%);  
+  --text-button-shadow-color:  0 5px 2px hsl(185, 58%, 25%);
+  --keyboard-bg : hsl(45, 7%, 89%); 
+}
+
+body.theme-3{
+  --primary-bg-color: hsl(268, 75%, 9%); 
+  --toggle-bg-color: hsl(268, 71%, 12%); 
+  --screen-bg-color: hsl(268, 71%, 12%); 
+  --text-color : hsl(52, 100%, 62%);  
+  --box-shadow : 0 5px 2px hsl(290, 70%, 36%);
+  --number-color :  hsl(52, 100%, 62%);
+  --range-color :  hsl(176, 100%, 44%); 
+  --equals-color : hsl(176, 100%, 44%); 
+  --equals-shadow-color :  0 5px 3px hsl(177, 92%, 70%);
+  --text-button-color : hsl(281, 89%, 26%); 
+  --text-button-shadow-color:  0 5px 2px hsl(285, 91%, 52%);  
+  --keyboard-bg : hsl(268, 47%, 21%); 
 }
 
 .theme , .output,.input{
@@ -25,34 +70,26 @@ body{
   height: 380px;
   grid-template-columns: repeat(4,100px);
   grid-template-rows: repeat(4,70px); 
-  background-color: hsl(223, 31%, 20%); 
+  background-color: var(--toggle-bg-color);
 }
 
-.input-1{
-  background-color: hsl(223, 31%, 20%); 
-}
 
-.input-2{
-  background-color: hsl(0, 0%, 90%); 
-}
-
-.input-3{
-  background-color: hsl(268, 75%, 9%);
-}
 .input > button{
   font-size: 20px;
   align-content: center;
-  color: hsl(221, 14%, 31%);   
+  color: var(--number-color);  
   width: 80px; 
   height: 50px;
   margin : 0 auto; 
   border-radius: 5px; 
   border : none;  
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  background-color: var(--keyboard-bg); 
+  box-shadow: var(--box-shadow);
 }
 
-.input  > button:hover{
-  background-color : grey; 
+.input  > button:active{
+  opacity: 0.9;
+  transform: translateY(2px); 
 }
 
 button.span-two{
@@ -61,12 +98,14 @@ button.span-two{
 }
 
 button[data-equals]{
-   background-color:  hsl(6, 63%, 50%); 
+   background-color:  var(--equals-color); 
+   box-shadow: var(--equals-shadow-color );
    color : white; 
 }
 
 button[data-reset],button[data-delete]{
-  background-color:hsl(225, 21%, 49%); 
+  background-color:var(--text-button-color); 
+  box-shadow: var(--text-button-shadow-color); 
   color : white; 
 }
 
@@ -83,7 +122,7 @@ button[data-reset],button[data-delete]{
 .theme_choice::before{
   content: "THEME";
   font-size:8px; 
-  color : white; 
+  color : var(--text-color); 
   right : 60px; 
   top : 7px; 
   position: absolute;
@@ -93,8 +132,8 @@ button[data-reset],button[data-delete]{
 .theme_choice::after{
   content: "1 2 3";
   justify-content:space-between;
-  font-size:17px; 
-  color : white; 
+  font-size:15px; 
+  color : var(--text-color); 
   top : -20px;
   right : 10px;  
   position: absolute;
@@ -106,7 +145,7 @@ button[data-reset],button[data-delete]{
   -webkit-appearance: none;
   height: 20px;
   border-radius: 50px;
-  background: hsl(223, 31%, 20%)   ;
+  background: var(--toggle-bg-color)  ;
   outline: none;
   -webkit-transition: .2s;
   transition: opacity .2s;
@@ -135,7 +174,7 @@ input[type=range]::-webkit-slider-thumb {
   height: 14px;
   width: 14px;
   border-radius: 50%;
-  background:hsl(25, 98%, 40%); 
+  background:var(--range-color);  
   cursor: pointer;
   -webkit-appearance: none;
 
@@ -144,39 +183,24 @@ input[type=range]::-webkit-slider-thumb {
 .output{
   height : 120px; 
   margin : 10px auto; 
-  background-color: hsl(224, 36%, 15%); 
+  background-color: var(--screen-bg-color); 
   display : flex;
   align-items:flex-end; 
   justify-content:space-around;
   flex-direction:column;
   padding : 10px; 
-  color : white; 
   word-wrap: break-word;
   word-break : break-all;
 }
 
-.output-1{
-  background-color: hsl(224, 36%, 15%); 
-  color : white; 
-}
-
-.output-2{
-  background-color: hsl(0, 5%, 81%);
-  color : hsl(60, 10%, 19%); 
-}
-
-.output-2{
-  background-color: hsl(268, 71%, 12%); 
-  color : hsl(52, 100%, 62%)
-}
 
 
 .output .previous-operand{
-  color:rgba(255,255,255,.75);
+  color:var(--text-color); 
   font-size: 1.5rem;
 }
 
 .output .current-operand{
-  color:white; 
+  color: var(--text-color); 
   font-size: 2.5rem;
 }

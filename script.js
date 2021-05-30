@@ -136,13 +136,32 @@ resetButton.addEventListener("click", () => {
   Calculator.updateDisplay();
 });
 
-div.style.background = "blue";
-$(document).ready(function(){
-  
-  $('input[type="range"]').on("input", function(){
-    var theme=$('#myChoice'); 
-    if (theme.value == 2){
-      $('.input').addClass('input-2'); 
-    }
-  });
+function addClass(className) {
+  var element = document.getElementsByTagName("body")[0];
+  element.classList.add(className);
+}
+
+function removeClass(className) {
+  var element = document.getElementsByTagName("body")[0];
+  element.classList.remove(className);
+}
+
+$('input[type=range]').on('input', function () {
+  var mode_theme = $(this).val();
+  switch(mode_theme) {
+    case '1':
+      removeClass("theme-2");
+      removeClass("theme-3"); 
+      break;
+    case '2':
+      addClass("theme-2");
+      removeClass("theme-3");
+      break;
+    case '3': 
+    addClass('theme-3'); 
+    removeClass('theme-2'); 
+      break; 
+    default:
+      break; 
+  } 
 });
